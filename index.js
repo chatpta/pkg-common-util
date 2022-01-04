@@ -1,1 +1,4 @@
-module.exports = require( './lib/untilityFunctions' );
+module.exports = {
+    util: require( './lib/untilityFunctions' ),
+    error: require( './lib/appErrorHandlers' )
+}
