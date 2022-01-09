@@ -193,4 +193,36 @@ describe( "Application error handler test", function () {
                 done();
             } );
     } );
+
+    it( "throwBadInputError", function ( done ) {
+
+        // Act
+        request( testApp( errHandler.throwBadInputError ) )
+            .get( '/' )
+            .expect( 200 )
+            .end( ( err, response ) => {
+                if ( err ) return;
+
+                // Assert
+                assert( response.status === 200 );
+                assert.deepStrictEqual( response?.body?.error,  "bad_input" );
+                done();
+            } );
+    } );
+
+    it( "throwInputNotUuidError", function ( done ) {
+
+        // Act
+        request( testApp( errHandler.throwInputNotUuidError ) )
+            .get( '/' )
+            .expect( 200 )
+            .end( ( err, response ) => {
+                if ( err ) return;
+
+                // Assert
+                assert( response.status === 200 );
+                assert.deepStrictEqual( response?.body?.error, "input_not_uuid"  );
+                done();
+            } );
+    } );
 } );
