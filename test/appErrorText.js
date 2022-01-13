@@ -225,4 +225,20 @@ describe( "Application error handler test", function () {
                 done();
             } );
     } );
+
+    it( "throwFileTooLargeError", function ( done ) {
+
+        // Act
+        request( testApp( errHandler.throwFileTooLargeError ) )
+            .get( '/' )
+            .expect( 200 )
+            .end( ( err, response ) => {
+                if ( err ) return;
+
+                // Assert
+                assert( response.status === 200 );
+                assert.deepStrictEqual( response?.body?.error, "file_too_large"  );
+                done();
+            } );
+    } );
 } );
