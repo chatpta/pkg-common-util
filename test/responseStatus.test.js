@@ -17,9 +17,19 @@ describe( 'ResponseStatus', function () {
 
     it( 'setOk', function ( done ) {
 
-        resCode.setOk( res );
+        const modifiedResObj = resCode.setOk( res );
 
         assert.deepStrictEqual( res.statusCode, 200 );
+        assert.deepStrictEqual( modifiedResObj.statusCode, 200 );
+        done();
+    } );
+
+    it( 'setCreated', function ( done ) {
+
+        const modifiedResObj = resCode.setCreated( res );
+
+        assert.deepStrictEqual( res.statusCode, 201 );
+        assert.deepStrictEqual( modifiedResObj.statusCode, 201 );
         done();
     } );
 
