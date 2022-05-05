@@ -15,7 +15,7 @@ function testApp( throwErrorFunction ) {
     return app;
 }
 
-describe( "Application error handler test", function () {
+describe( "AppErrorHandlers", function () {
 
 
     it( "throwValidationFailureError", function ( done ) {

@@ -3,11 +3,11 @@ const { describe, it } = require( 'mocha' );
 const { util } = require( '../index' );
 
 
-describe( 'CommonUtil test', function () {
+describe( 'UtilityFunctions', function () {
 
-    describe( 'Validate function test', function () {
+    describe( 'Validate function', function () {
 
-        it( 'isValidUuidString returns true if uuid false otherwise', function ( done ) {
+        it( 'isValidUuidString; returns true if uuid; false otherwise', function ( done ) {
             const input = { one: "1", two: "2", three: "3", four: "4" }
             const expectedOutput = { one: "1", three: "3" }
 
