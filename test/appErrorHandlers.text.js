@@ -23,12 +23,11 @@ describe( "AppErrorHandlers", function () {
         // Act
         request( testApp( errHandler.throwValidationFailureError ) )
             .get( '/' )
-            .expect( 200 )
+            .expect( 401 )
             .end( ( err, response ) => {
                 if ( err ) return;
 
                 // Assert
-                assert( response.status === 200 );
                 assert.deepStrictEqual( response?.body?.error, "validation_failure" );
                 done();
             } );
@@ -39,12 +38,11 @@ describe( "AppErrorHandlers", function () {
         // Act
         request( testApp( errHandler.throwRecordExistError ) )
             .get( '/' )
-            .expect( 200 )
+            .expect( 409 )
             .end( ( err, response ) => {
                 if ( err ) return;
 
                 // Assert
-                assert( response.status === 200 );
                 assert.deepStrictEqual( response?.body?.error, "record_exist" );
                 done();
             } );
@@ -55,12 +53,11 @@ describe( "AppErrorHandlers", function () {
         // Act
         request( testApp( errHandler.throwWrongCredentialsError ) )
             .get( '/' )
-            .expect( 200 )
+            .expect( 401 )
             .end( ( err, response ) => {
                 if ( err ) return;
 
                 // Assert
-                assert( response.status === 200 );
                 assert.deepStrictEqual( response?.body?.error, "wrong_credentials" );
                 done();
             } );
@@ -71,12 +68,11 @@ describe( "AppErrorHandlers", function () {
         // Act
         request( testApp( errHandler.throwLoginRequiredError ) )
             .get( '/' )
-            .expect( 200 )
+            .expect( 401 )
             .end( ( err, response ) => {
                 if ( err ) return;
 
                 // Assert
-                assert( response.status === 200 );
                 assert.deepStrictEqual( response?.body?.error, "login_required" );
                 done();
             } );
@@ -87,12 +83,11 @@ describe( "AppErrorHandlers", function () {
         // Act
         request( testApp( errHandler.throwRecordNotFoundError ) )
             .get( '/' )
-            .expect( 200 )
+            .expect( 404 )
             .end( ( err, response ) => {
                 if ( err ) return;
 
                 // Assert
-                assert( response.status === 200 );
                 assert.deepStrictEqual( response?.body?.error, "record_not_found" );
                 done();
             } );
@@ -103,12 +98,11 @@ describe( "AppErrorHandlers", function () {
         // Act
         request( testApp( errHandler.throwRecordNotSavedError ) )
             .get( '/' )
-            .expect( 200 )
+            .expect( 400 )
             .end( ( err, response ) => {
                 if ( err ) return;
 
                 // Assert
-                assert( response.status === 200 );
                 assert.deepStrictEqual( response?.body?.error, "record_save_failure" );
                 done();
             } );
@@ -119,12 +113,11 @@ describe( "AppErrorHandlers", function () {
         // Act
         request( testApp( errHandler.throwUpdateFailedError ) )
             .get( '/' )
-            .expect( 200 )
+            .expect( 400 )
             .end( ( err, response ) => {
                 if ( err ) return;
 
                 // Assert
-                assert( response.status === 200 );
                 assert.deepStrictEqual( response?.body?.error, "update_failed" );
                 done();
             } );
@@ -135,12 +128,11 @@ describe( "AppErrorHandlers", function () {
         // Act
         request( testApp( errHandler.throwTransactionFailedError ) )
             .get( '/' )
-            .expect( 200 )
+            .expect( 400 )
             .end( ( err, response ) => {
                 if ( err ) return;
 
                 // Assert
-                assert( response.status === 200 );
                 assert.deepStrictEqual( response?.body?.error, "transaction_failed" );
                 done();
             } );
@@ -151,12 +143,11 @@ describe( "AppErrorHandlers", function () {
         // Act
         request( testApp( errHandler.throwUsedTokenError ) )
             .get( '/' )
-            .expect( 200 )
+            .expect( 401 )
             .end( ( err, response ) => {
                 if ( err ) return;
 
                 // Assert
-                assert( response.status === 200 );
                 assert.deepStrictEqual( response?.body?.error, "wrong_credentials" );
                 done();
             } );
@@ -167,12 +158,11 @@ describe( "AppErrorHandlers", function () {
         // Act
         request( testApp( errHandler.throwFileFormatNotSupportedError ) )
             .get( '/' )
-            .expect( 200 )
+            .expect( 415 )
             .end( ( err, response ) => {
                 if ( err ) return;
 
                 // Assert
-                assert( response.status === 200 );
                 assert.deepStrictEqual( response?.body?.error, "file_format_not_supported" );
                 done();
             } );
@@ -183,12 +173,11 @@ describe( "AppErrorHandlers", function () {
         // Act
         request( testApp( errHandler.throwNotAuthorizedError ) )
             .get( '/' )
-            .expect( 200 )
+            .expect( 401 )
             .end( ( err, response ) => {
                 if ( err ) return;
 
                 // Assert
-                assert( response.status === 200 );
                 assert.deepStrictEqual( response?.body?.error, "not_authorized" );
                 done();
             } );
@@ -199,12 +188,11 @@ describe( "AppErrorHandlers", function () {
         // Act
         request( testApp( errHandler.throwBadInputError ) )
             .get( '/' )
-            .expect( 200 )
+            .expect( 400 )
             .end( ( err, response ) => {
                 if ( err ) return;
 
                 // Assert
-                assert( response.status === 200 );
                 assert.deepStrictEqual( response?.body?.error,  "bad_input" );
                 done();
             } );
@@ -215,12 +203,11 @@ describe( "AppErrorHandlers", function () {
         // Act
         request( testApp( errHandler.throwInputNotUuidError ) )
             .get( '/' )
-            .expect( 200 )
+            .expect( 400 )
             .end( ( err, response ) => {
                 if ( err ) return;
 
                 // Assert
-                assert( response.status === 200 );
                 assert.deepStrictEqual( response?.body?.error, "input_not_uuid"  );
                 done();
             } );
@@ -231,12 +218,11 @@ describe( "AppErrorHandlers", function () {
         // Act
         request( testApp( errHandler.throwFileTooLargeError ) )
             .get( '/' )
-            .expect( 200 )
+            .expect( 413 )
             .end( ( err, response ) => {
                 if ( err ) return;
 
                 // Assert
-                assert( response.status === 200 );
                 assert.deepStrictEqual( response?.body?.error, "file_too_large"  );
                 done();
             } );
