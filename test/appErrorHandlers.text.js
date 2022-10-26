@@ -153,6 +153,21 @@ describe( "AppErrorHandlers", function () {
             } );
     } );
 
+    it( "throwBadVisitorTokenError", function ( done ) {
+
+        // Act
+        request( testApp( errHandler.throwBadVisitorTokenError ) )
+            .get( '/' )
+            .expect( 401 )
+            .end( ( err, response ) => {
+                if ( err ) return;
+
+                // Assert
+                assert.deepStrictEqual( response?.body?.error, "bad_visitor_token" );
+                done();
+            } );
+    } );
+
     it( "throwFileFormatNotSupportedError", function ( done ) {
 
         // Act

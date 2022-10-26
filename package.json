@@ -1,6 +1,6 @@
 {
   "name": "@chatpta/common-util",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "repository": "https://github.com/chatpta/common-util",
   "description": "Common utility for MVC framework",
   "main": "index.js",
