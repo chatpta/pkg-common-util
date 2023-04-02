@@ -242,4 +242,19 @@ describe( "AppErrorHandlers", function () {
                 done();
             } );
     } );
+
+    it( "throwInvalidTimeValueError", function ( done ) {
+
+        // Act
+        request( testApp( errHandler.throwInvalidTimeValueError ) )
+            .get( '/' )
+            .expect( 403 )
+            .end( ( err, response ) => {
+                if ( err ) return;
+
+                // Assert
+                assert.deepStrictEqual( response?.body?.error, "invalid_time_value"  );
+                done();
+            } );
+    } );
 } );
